@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompoundController;
 use App\Http\Controllers\ProjectController;
@@ -9,11 +8,11 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ExportController;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return view('welcome');
 })->name('home');
 
 Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group(['middleware'=>['auth']], function() {
