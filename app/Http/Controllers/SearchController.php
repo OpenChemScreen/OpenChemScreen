@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Compound;
+use App\Utilities\RDKitTools;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -48,6 +49,25 @@ class SearchController extends Controller
         if ( $request->has('smiles') ) {
             // fetch all of the smiles from result
             // pass them to the RDKit API for substructure searching
+
+            $patterns = [];
+
+            foreach( $results as  $result) {
+                $patterns[] = $result->smiles;
+            }
+
+            /*
+        token: localStorage.getItem("chemrender-token"),
+        query: query,
+        smarts: smarts,
+        patterns: patterns,
+        chiral: chiral,
+             */
+
+            $rdkit_search = new RDKitTools();
+            $response = $rdkit_search->substructureSearch($request->has('smiles'),$patterns);
+
+            
 
         }
 

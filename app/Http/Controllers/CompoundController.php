@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compound;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class CompoundController extends Controller
@@ -9,9 +11,19 @@ class CompoundController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, Project $project = null)
     {
+
         //
+        if (!empty($project)) {
+            $compounds = Compound::where('project_id', $project->id)->simplePaginate(15);
+
+            return view('compound.index', compact('compounds'));
+        }
+
+        $compounds = Compound::paginate(15);
+
+        return view('compound.index', compact('compounds'));
     }
 
     /**

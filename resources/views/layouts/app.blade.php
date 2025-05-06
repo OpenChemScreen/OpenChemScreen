@@ -14,7 +14,7 @@
             @if (Route::has('login'))
                 <nav class="container-fluid">
                     <a href="{{ route('dashboard') }}" class="d-flex align-items-center link-body-emphasis text-decoration-none pt-2">
-                        <img src="{{ asset('images/logo.svg') }}" style="height: 3rem; display: inline-block" alt="OpenChemScreen logo">
+                        <img src="/images/logo.svg" style="height: 3rem; display: inline-block" alt="OpenChemScreen logo">
                         <h1 class="fs-4 pt-2 ms-2">OpenChemScreen</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
