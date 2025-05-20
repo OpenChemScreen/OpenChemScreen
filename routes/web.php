@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class)->names('users');
-    Route::get('compounds/{?project}',[CompoundController::class, 'index'])->name('compounds.index');
+    Route::get('compounds/{project?}',[CompoundController::class, 'index'])->name('compounds.index');
     Route::get('compounds/{compound}/view',[CompoundController::class, 'view'])->name('compounds.view');
     Route::get('compounds/create',[CompoundController::class, 'create'])->name('compounds.create');
     Route::post('compounds/store',[CompoundController::class, 'store'])->name('compounds.store');

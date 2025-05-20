@@ -18,12 +18,12 @@ class CompoundController extends Controller
         if (!empty($project)) {
             $compounds = Compound::where('project_id', $project->id)->simplePaginate(15);
 
-            return view('compound.index', compact('compounds'));
+            return view('compounds.index', compact('compounds'));
         }
 
         $compounds = Compound::paginate(15);
 
-        return view('compound.index', compact('compounds'));
+        return view('compounds.index', compact('compounds'));
     }
 
     /**
